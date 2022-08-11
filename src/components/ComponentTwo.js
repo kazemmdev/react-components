@@ -70,7 +70,7 @@ const data = [
 
 const ComponentTwo = () => {
   return (
-    <Card sx={{ background: "#f3f3f3", boxShadow: "0 0 6px 4px #ddd", borderRadius: 4 }}>
+    <Card sx={{ background: "#f3f3f3", boxShadow: "0 0 6px 4px #ddd", borderRadius: 4, maxWidth: "360px" }}>
       <CardContent>
         <Box
           sx={{ display: "flex", paddingBottom: 1, marginBottom: 1, borderBottom: "2px solid #ddd", fontWeight: 600 }}

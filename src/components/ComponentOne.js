@@ -30,7 +30,7 @@ const ComponentOne = () => {
   const [selected, setSelected] = useState([]);
 
   return (
-    <Card sx={{ background: "#f3f3f3", boxShadow: "0 0 6px 4px #ddd", borderRadius: 4 }}>
+    <Card sx={{ background: "#f3f3f3", boxShadow: "0 0 6px 4px #ddd", borderRadius: 4, maxWidth: "360px" }}>
       <CardContent>
         <Box
           sx={{
@@ -149,7 +149,7 @@ const ComponentOne = () => {
             </FormControl>
           </Box>
         </Box>
-        <Box sx={{ marginTop: 4, display: "flex", gap: 4 }}>
+        <Box sx={{ marginTop: 4, display: "flex", gap: 2 }}>
           <Button color="error" variant="contained" sx={{ fontSize: 14, textTransform: "unset", borderRadius: 10 }}>
             Läschen
           </Button>
