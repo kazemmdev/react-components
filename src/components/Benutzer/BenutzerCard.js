@@ -1,23 +1,10 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  FormControl,
-  IconButton,
-  Input,
-  MenuItem,
-  Select,
-  Typography,
-} from "@mui/material";
-import { Add } from "@mui/icons-material";
-import { useState } from "react";
+import React, { Component } from "react";
 import styles from "./BenutzerCard.module.css";
 
 const data = [
   {
     benutzer: "1000-1014",
-    andrede: "Herr",
+    anrede: "Herr",
     nachname: "Benai",
     vorname: "Raschid",
     password: "12345",
@@ -27,100 +14,132 @@ const data = [
   },
 ];
 
-const BenutzerCard = () => {
-  const [selected, setSelected] = useState([]);
+export class BenutzerCard extends Component {
+  state = {
+    selected: [],
+    items: data,
+  };
 
-  return (
-    <Card className={styles.card}>
-      <CardContent>
-        <Box className={styles.cardHeader}>
-          <IconButton color="success">
-            <Add />
-          </IconButton>
-          <Box>Benutzer</Box>
-          <FormControl variant="standard" className={styles.input}>
-            <Select displayEmpty className={styles.inputOption} onChange={(e) => setSelected(e.target.value)}>
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              {data &&
-                data.map((item) => (
-                  <MenuItem key={item.benutzer} value={item}>
-                    {item.andrede + " " + item.nachname + " " + item.vorname}
-                  </MenuItem>
-                ))}
-            </Select>
-          </FormControl>
-        </Box>
-        <Box className={styles.inputs}>
-          <Box className={styles.inputRow}>
-            <Typography className={styles.inputName}>Benutzer</Typography>
-            <Box>{selected && selected.benutzer}</Box>
-          </Box>
-          <Box className={styles.inputRow}>
-            <Typography className={styles.inputName}>Anrede</Typography>
-            <FormControl variant="standard" className={styles.inputOption}>
-              <Select
-                displayEmpty
-                value={selected?.andrede ?? ""}
-                onChange={(e) => setSelected({ ...selected, andrede: e.target.value })}
-                className={styles.inputOptionSelect}
-              >
-                <MenuItem value="">
-                  <em>Select an option</em>
-                </MenuItem>
-                <MenuItem value={"Herr"}>Herr</MenuItem>
-                <MenuItem value={"Frau"}>Frau</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-          <Box className={styles.inputRow}>
-            <Typography className={styles.inputName}>Nachname</Typography>
-            <Input value={selected?.nachname} className={styles.inputField} placeholder="Nachname" />
-          </Box>
-          <Box className={styles.inputRow}>
-            <Typography className={styles.inputName}>Vorname</Typography>
-            <Input value={selected?.vorname} className={styles.inputField} placeholder="Vorname" />
-          </Box>
-          <Box className={styles.inputRow}>
-            <Typography className={styles.inputName}>Mail</Typography>
-            <Input value={selected?.mail} className={styles.inputField} placeholder="Mail" />
-          </Box>
-          <Box className={styles.inputRow}>
-            <Typography className={styles.inputName}>Anschrift</Typography>
-            <Input value={selected.anschrift} className={styles.inputField} placeholder="Anschrift" />
-          </Box>
-          <Box className={styles.inputRow}>
-            <Typography className={styles.inputName}>Funktion</Typography>
-            <FormControl variant="standard" className={styles.inputOption}>
-              <Select
-                displayEmpty
-                value={selected?.funktion ?? ""}
-                onChange={(e) => setSelected({ ...selected, funktion: e.target.value })}
-                className={styles.inputOptionSelect}
-              >
-                <MenuItem value="">
-                  <em>Select an option</em>
-                </MenuItem>
-                <MenuItem value={"Prufer"}>Prufer</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-        </Box>
-        <Box className={styles.actions}>
-          <Button color="error" variant="contained" className={styles.button}>
-            Läschen
-          </Button>
-          <Button color="info" variant="contained" className={styles.button}>
-            PW Reset
-          </Button>
-          <Button color="success" variant="contained" className={styles.button}>
-            Speichern
-          </Button>
-        </Box>
-      </CardContent>
-    </Card>
-  );
-};
+  render() {
+    const { selected, items } = this.state;
+
+    return (
+      <div className={styles.card}>
+        <div className={styles.cardHeader}>
+          <div className={styles.addButton}>
+            <img src={require("../../assets/plus-small.svg").default} alt="plus" />
+          </div>
+          <div className="mr-6">Benutzer</div>
+          <Options
+            items={items.map((item) => item.nachname)}
+            selectOption={(e) => this.setState({ selected: items.find((item) => item.nachname === e) })}
+          />
+        </div>
+        <div className={styles.inputs}>
+          <div className={styles.inputRow}>
+            <div className={styles.inputName}>Benutzer</div>
+            <div>{selected && selected.benutzer}</div>
+          </div>
+          <div className={styles.inputRow}>
+            <div className={styles.inputName}>Anrede</div>
+            <Options
+              items={["Herr", "Frau"]}
+              value={selected?.anrede || ""}
+              selectOption={(e) => this.setState({ selected: { ...selected, anrede: e } })}
+            />
+          </div>
+          <div className={styles.inputRow}>
+            <div className={styles.inputName}>Nachname</div>
+            <input
+              type="string"
+              className={styles.inputField}
+              placeholder="Nachname"
+              value={selected?.nachname || ""}
+              onChange={(e) => this.setState({ selected: { ...selected, nachname: e.target.value } })}
+            />
+          </div>
+          <div className={styles.inputRow}>
+            <div className={styles.inputName}>Vorname</div>
+            <input
+              type="string"
+              className={styles.inputField}
+              placeholder="Vorname"
+              value={selected?.vorname || ""}
+              onChange={(e) => this.setState({ selected: { ...selected, vorname: e.target.value } })}
+            />
+          </div>
+          <div className={styles.inputRow}>
+            <div className={styles.inputName}>Mail</div>
+            <input
+              type="string"
+              className={styles.inputField}
+              placeholder="Mail"
+              value={selected?.mail || ""}
+              onChange={(e) => this.setState({ selected: { ...selected, mail: e.target.value } })}
+            />
+          </div>
+          <div className={styles.inputRow}>
+            <div className={styles.inputName}>Anschrift</div>
+            <input
+              type="string"
+              className={styles.inputField}
+              placeholder="Anschrift"
+              value={selected?.anschrift || ""}
+              onChange={(e) => this.setState({ selected: { ...selected, anschrift: e.target.value } })}
+            />
+          </div>
+          <div className={styles.inputRow}>
+            <div className={styles.inputName}>Funktion</div>
+            <Options
+              items={["Prufer"]}
+              value={selected?.funktion || ""}
+              selectOption={(e) => this.setState({ selected: { ...selected, funktion: e } })}
+            />
+          </div>
+        </div>
+        <div className={styles.actions}>
+          <button className={styles.buttonError}>Läschen</button>
+          <button className={styles.buttonInfo}>PW Reset</button>
+          <button className={styles.buttonSuccess}>Speichern</button>
+        </div>
+      </div>
+    );
+  }
+}
+
+export class Options extends Component {
+  state = {
+    isOpen: false,
+    selected: "",
+  };
+
+  render() {
+    const handleSelectOption = (item) => {
+      this.props.selectOption(item);
+      this.setState({ isOpen: false, selected: item });
+    };
+    return (
+      <div className={styles.optionsWrapper}>
+        <button
+          type="button"
+          className={styles.optionsInput}
+          onClick={() => this.setState({ isOpen: !this.state.isOpen })}
+        >
+          {this.state.selected || this.props.value}
+          <span className={styles.optionsInputSvg}>
+            <img src={require("../../assets/menu.svg").default} />
+          </span>
+        </button>
+        <ul className={styles.optionsMenu + (this.state.isOpen ? " block" : " hidden")}>
+          {this.props.items.map((item) => (
+            <li key={item} className={styles.optionsItem} onClick={() => handleSelectOption(item)}>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+}
 
 export default BenutzerCard;

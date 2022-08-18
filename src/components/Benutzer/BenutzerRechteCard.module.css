@@ -11,7 +11,7 @@
 }
 
 .cardHeaderOptions {
-  @apply flex flex-1 justify-between pl-3 pr-2 !important;
+  @apply flex flex-1 justify-between pl-1 pr-2 !important;
 }
 
 .inputRow {

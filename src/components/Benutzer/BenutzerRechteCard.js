@@ -74,9 +74,11 @@ export class BenutzerRechteCard extends Component {
   };
 
   render() {
-    const OptionValues = [0, 1, 2, 3];
+    const optionValues = [0, 1, 2, 3];
+
     const handleOptionSelector = (value, name) => {
       const inputs = this.state.inputs;
+
       inputs.map((input) => {
         if (input.name === name) input.value = value;
       });
@@ -99,7 +101,7 @@ export class BenutzerRechteCard extends Component {
           <div key={item.name} className={styles.inputRow}>
             <strong className={styles.inputRowName}>{item.name}</strong>
             <div className={styles.inputRowOptions} onChange={(e) => handleOptionSelector(e.target.value, item.name)}>
-              {OptionValues.map((radio) => (
+              {optionValues.map((radio) => (
                 <input key={radio} name={item.name} value={radio} type="radio" className={styles.inputRowOption} />
               ))}
             </div>
