@@ -74,12 +74,14 @@ export class BenutzerRechteCard extends Component {
   };
 
   render() {
+    const OptionValues = [0, 1, 2, 3];
     const handleOptionSelector = (value, name) => {
-      const inputs = this.state.inputs.map((input) =>
-        input.name === name ? (input.value = value) : (input.value = input.value)
-      );
+      const inputs = this.state.inputs;
+      inputs.map((input) => {
+        if (input.name === name) input.value = value;
+      });
 
-      this.setState(inputs);
+      this.setState({ inputs });
     };
 
     return (
@@ -96,24 +98,16 @@ export class BenutzerRechteCard extends Component {
         {this.state.inputs.map((item) => (
           <div key={item.name} className={styles.inputRow}>
             <strong className={styles.inputRowName}>{item.name}</strong>
-            <RadioField name={item.name} onClick={handleOptionSelector} />
+            <div className={styles.inputRowOptions} onChange={(e) => handleOptionSelector(e.target.value, item.name)}>
+              {OptionValues.map((radio) => (
+                <input key={radio} name={item.name} value={radio} type="radio" className={styles.inputRowOption} />
+              ))}
+            </div>
           </div>
         ))}
       </div>
     );
   }
 }
-
-const RadioField = ({ name, onClick }) => {
-  const values = [0, 1, 2, 3];
-
-  return (
-    <div className={styles.inputRowOptions} onChange={(e) => onClick(e.target.value, name)}>
-      {values.map((radio) => (
-        <input key={radio} name={name} value={radio} type="radio" className={styles.inputRowOption} />
-      ))}
-    </div>
-  );
-};
 
 export default BenutzerRechteCard;
