@@ -1,0 +1,31 @@
+.card {
+  @apply w-full p-4 bg-slate-100 rounded-2xl max-w-[380px] h-fit shadow-[0_0_6px_4px_rgb(221,221,221)] !important;
+}
+
+.cardHeader {
+  @apply flex items-center font-bold pb-4 mb-4 border-b-2 border-gray-200 !important;
+}
+
+.cardHeaderName {
+  @apply min-w-[200px] !important;
+}
+
+.cardHeaderOptions {
+  @apply flex flex-1 justify-between pl-3 pr-2 !important;
+}
+
+.inputRow {
+  @apply flex items-center justify-between pb-2 !important;
+}
+
+.inputRowName {
+  @apply min-w-[200px] !important;
+}
+
+.inputRowOptions {
+  @apply flex items-center justify-between gap-6;
+}
+
+.inputRowOption {
+  @apply focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300;
+}

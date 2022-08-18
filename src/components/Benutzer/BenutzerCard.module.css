@@ -1,0 +1,47 @@
+.card {
+  @apply w-full bg-slate-100 rounded-2xl max-w-[370px] h-fit shadow-[0_0_6px_4px_rgb(221,221,221)] !important;
+}
+
+.cardHeader {
+  @apply flex items-center font-bold pb-4 mb-4 border-b-2 border-gray-200 !important;
+}
+
+.input {
+  @apply flex h-[30px] w-full pl-3 !important;
+}
+
+.inputOption {
+  @apply flex-1 h-[30px] text-lg;
+}
+
+.inputs {
+  @apply flex flex-col gap-6;
+}
+
+.inputRow {
+  @apply flex items-center;
+}
+
+.inputName {
+  @apply min-w-[120px] font-bold !important;
+}
+
+.inputOption {
+  @apply flex-1 min-w-[160px];
+}
+
+.inputOptionSelect {
+  @apply flex-1 h-[30px] text-sm;
+}
+
+.inputField {
+  @apply flex-1 min-w-[160px] h-[30px] text-sm;
+}
+
+.actions {
+  @apply flex justify-between gap-2 mt-10;
+}
+
+.button {
+  @apply rounded-full normal-case !important;
+}
