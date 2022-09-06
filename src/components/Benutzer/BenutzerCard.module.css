@@ -1,79 +1,195 @@
 .card {
-  @apply w-full p-4 bg-slate-100 rounded-2xl max-w-[380px] h-fit shadow-[0_0_6px_4px_rgb(221,221,221)] !important;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  max-width: 380px;
+  height: fit-content;
+  background-color: rgb(241, 245, 249);
+  box-shadow: 0 0 6px 4px rgb(221, 221, 221);
 }
 
 .cardHeader {
-  @apply flex items-center font-bold pb-4 mb-4 border-b-2 border-gray-200 !important;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgb(229, 231, 235);
 }
 
 .addButton {
-  @apply cursor-pointer flex items-center justify-center mr-2 h-6 w-6 p-1 rounded-full hover:bg-gray-200 active:bg-gray-300 transition-colors ease-in-out duration-150;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
+  height: 1.5rem;
+  min-width: 1.5rem;
+  padding: 0.25rem;
+  border-radius: 100%;
+  transition: all 0.15s ease-in-out;
+}
+
+.addButton:hover {
+  background-color: rgb(221, 231, 235);
+}
+
+.addButton:active {
+  background-color: rgb(209, 213, 219);
 }
 
 .input {
-  @apply flex h-[30px] w-full pl-3 !important;
+  display: flex;
+  height: 30px;
+  width: 100%;
+  padding-left: 0.75rem;
 }
 
 .inputOption {
-  @apply flex-1 h-[30px] text-lg;
+  flex: 1;
+  height: 30px;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .inputs {
-  @apply flex flex-col gap-6;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .inputRow {
-  @apply flex items-center;
+  display: flex;
+  align-items: center;
 }
 
 .inputName {
-  @apply min-w-[120px] font-bold !important;
+  min-width: 120px;
+  font-weight: 700;
 }
 
 .inputOption {
-  @apply flex-1 min-w-[160px];
+  flex: 1;
+  min-width: 160px;
 }
 
 .inputOptionSelect {
-  @apply flex-1 h-[30px] text-sm;
+  flex: 1;
+  height: 30px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .inputField {
-  @apply flex-1 min-w-[160px] h-[30px] text-sm bg-inherit border-b border-b-gray-300 pl-2 pr-10 py-1 text-left outline-none font-normal;
+  flex: 1;
+  height: 30px;
+  min-width: 160px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  background-color: inherit;
+  border-bottom: 1px solid rgb(209 213 219);
+  padding: 0.25rem 2.5rem 0.25rem 0.5rem;
+  outline: none;
+  font-weight: 400;
+  text-align: left;
 }
 
 .actions {
-  @apply flex justify-between gap-2 mt-10;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5rem;
 }
 
 .buttonError {
-  @apply rounded-full bg-red-500 active:bg-red-600 text-white px-3 py-2 shadow normal-case transition-colors ease-in-out duration-150;
+  border-radius: 100px;
+  text-transform: none;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.15s ease-in-out;
+  color: white;
+  background-color: rgb(239 68 68);
+}
+
+.buttonError:active {
+  background-color: rgb(220 38 38);
 }
 
 .buttonInfo {
-  @apply rounded-full bg-blue-500 active:bg-blue-600 text-white px-3 py-2 shadow normal-case transition-colors ease-in-out duration-150;
+  border-radius: 100px;
+  text-transform: none;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.15s ease-in-out;
+  color: white;
+  background-color: rgb(59 130 246);
+}
+
+.buttonInfo:active {
+  background-color: rgb(37 99 235);
 }
 
 .buttonSuccess {
-  @apply rounded-full bg-green-600 active:bg-green-700 text-white px-3 py-2 shadow normal-case transition-colors ease-in-out duration-150;
+  border-radius: 100px;
+  text-transform: none;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.15s ease-in-out;
+  color: white;
+  background-color: rgb(22 163 74);
+}
+
+.buttonSuccess:active {
+  background-color: rgb(21 128 61);
 }
 
 .optionsWrapper {
-  @apply flex mt-1 relative w-full;
+  display: flex;
+  margin-top: 0.25rem;
+  position: relative;
+  width: 100%;
 }
 
 .optionsInput {
-  @apply cursor-pointer relative w-full min-h-[36px] border-b border-b-gray-300 pl-2 pr-10 py-1 text-left outline-none font-normal !important;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  min-height: 36px;
+  border-bottom: 1px solid rgb(209 213 219);
+  outline: none;
+  font-weight: 400;
+  padding: 0.25rem 2.5rem 0.25rem 0.5rem;
+  text-align: left;
 }
 
 .optionsInputSvg {
-  @apply absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding-right: 0.25rem;
+}
+
+.optionsInputSvg img {
+  width: 1rem;
 }
 
 .optionsItem {
-  @apply text-gray-900 cursor-pointer select-none relative py-2 pl-3 pr-9;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  color: rgb(17 24 39);
+  padding: 0.5rem 2.25rem 0.5rem 0.75rem;
 }
 
 .optionsMenu {
-  @apply absolute z-10 top-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm;
+  z-index: 10;
+  position: absolute;
+  background: white;
+  margin-top: 0.25rem;
+  top: 2rem;
+  background: white;
+  max-height: 15rem;
+  width: 100%;
+  border-radius: 0.375rem;
+  padding: 0.25rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }

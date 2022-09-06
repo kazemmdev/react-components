@@ -1,31 +1,54 @@
 .card {
-  @apply w-full p-4 bg-slate-100 rounded-2xl max-w-[380px] h-fit shadow-[0_0_6px_4px_rgb(221,221,221)] !important;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  max-width: 380px;
+  height: fit-content;
+  background-color: rgb(241, 245, 249);
+  box-shadow: 0 0 6px 4px rgb(221, 221, 221);
 }
 
 .cardHeader {
-  @apply flex items-center font-bold pb-4 mb-4 border-b-2 border-gray-200 !important;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgb(229, 231, 235);
 }
 
 .cardHeaderName {
-  @apply min-w-[200px] !important;
+  min-width: 200px;
 }
 
 .cardHeaderOptions {
-  @apply flex flex-1 justify-between pl-1 pr-2 !important;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  padding-left: 0.25rem;
+  padding-right: 0.5rem;
 }
 
 .inputRow {
-  @apply flex items-center justify-between pb-2 !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
 }
 
 .inputRowName {
-  @apply min-w-[200px] !important;
+  min-width: 200px;
 }
 
 .inputRowOptions {
-  @apply flex items-center justify-between gap-6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
 }
 
 .inputRowOption {
-  @apply focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300;
+  height: 1rem;
+  width: 1rem;
+  border: 1px solid rgb(209 213 219);
 }
