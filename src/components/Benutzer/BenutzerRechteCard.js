@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import styles from "./BenutzerRechteCard.module.css";
 
 const data = [
@@ -68,48 +68,42 @@ const data = [
   },
 ];
 
-export class BenutzerRechteCard extends Component {
-  state = {
-    inputs: data,
-  };
+const BenutzerRechteCard = () => {
+  const optionValues = [0, 1, 2, 3];
+  const [items, setItems] = useState(data);
 
-  render() {
-    const optionValues = [0, 1, 2, 3];
-
-    const handleOptionSelector = (value, name) => {
-      const inputs = this.state.inputs;
-
-      inputs.map((input) => {
-        if (input.name === name) input.value = value;
-      });
-
-      this.setState({ inputs });
-    };
-
-    return (
-      <div className={styles.card}>
-        <div className={styles.cardHeader}>
-          <div className={styles.cardHeaderName}>Rechte</div>
-          <div className={styles.cardHeaderOptions}>
-            <span>0</span>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
+  return (
+    <div className={styles.card}>
+      <div className={styles.cardHeader}>
+        <div className={styles.cardHeaderName}>Rechte</div>
+        <div className={styles.cardHeaderOptions}>
+          <span>0</span>
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+        </div>
+      </div>
+      {items.map((item) => (
+        <div key={item.name} className={styles.inputRow}>
+          <strong className={styles.inputRowName}>{item.name}</strong>
+          <div
+            className={styles.inputRowOptions}
+            onChange={(e) => setItems({ ...items, [item.name]: e.target.value })}
+          >
+            {optionValues.map((radio) => (
+              <input
+                key={radio}
+                name={item.name}
+                value={radio}
+                type="radio"
+                className={styles.inputRowOption}
+              />
+            ))}
           </div>
         </div>
-        {this.state.inputs.map((item) => (
-          <div key={item.name} className={styles.inputRow}>
-            <strong className={styles.inputRowName}>{item.name}</strong>
-            <div className={styles.inputRowOptions} onChange={(e) => handleOptionSelector(e.target.value, item.name)}>
-              {optionValues.map((radio) => (
-                <input key={radio} name={item.name} value={radio} type="radio" className={styles.inputRowOption} />
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  }
-}
+      ))}
+    </div>
+  );
+};
 
 export default BenutzerRechteCard;
